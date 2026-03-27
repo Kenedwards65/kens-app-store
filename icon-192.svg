@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#bg)"/>
+  <rect x="13" y="13" width="165" height="165" rx="34" fill="none" stroke="url(#acc)" stroke-width="4"/>
+  <text x="50%" y="54%" font-family="Arial Black, sans-serif" font-weight="900" font-size="72" fill="url(#acc)" text-anchor="middle" dominant-baseline="middle" letter-spacing="3">KAS</text>
+  <text x="50%" y="76%" font-family="Arial, sans-serif" font-weight="400" font-size="24" fill="#666" text-anchor="middle" dominant-baseline="middle" letter-spacing="5">APP STORE</text>
+</svg>
