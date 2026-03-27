@@ -22,7 +22,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -33,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -44,7 +42,6 @@
       opacity: 0.4;
     }
 
-    /* ─── HEADER ─── */
     header {
       position: relative;
       padding: 60px 48px 40px;
@@ -75,11 +72,7 @@
       flex-wrap: wrap;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .brand { display: flex; flex-direction: column; gap: 4px; }
 
     .brand-eyebrow {
       font-size: 11px;
@@ -105,15 +98,15 @@
       font-size: clamp(56px, 8vw, 100px);
       line-height: 0.9;
       letter-spacing: 0.02em;
-      color: var(--text);
     }
 
-    h1 span {
-      color: var(--accent);
-    }
+    h1 span { color: var(--accent); }
 
-    .header-meta {
-      text-align: right;
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
     }
 
     .app-count {
@@ -130,7 +123,51 @@
       color: var(--muted);
     }
 
-    /* ─── NAV BAR ─── */
+    .admin-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .admin-badge:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+
+    .admin-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .login-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .login-btn:hover { border-color: var(--accent); color: var(--accent); }
+
     nav {
       max-width: 1400px;
       margin: 0 auto;
@@ -160,7 +197,6 @@
       color: #000;
     }
 
-    /* ─── GRID ─── */
     .grid-wrapper {
       max-width: 1400px;
       margin: 0 auto;
@@ -173,17 +209,14 @@
       gap: 20px;
     }
 
-    /* ─── APP CARD ─── */
     .app-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 28px;
-      cursor: pointer;
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
-      text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
@@ -204,7 +237,7 @@
     .app-card:hover {
       transform: translateY(-6px) scale(1.01);
       border-color: var(--card-accent, var(--accent));
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--card-accent, var(--accent))20;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
     .app-card:hover::before { opacity: 0.06; }
@@ -236,6 +269,12 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
     }
 
+    .card-top-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .status-dot {
       width: 8px;
       height: 8px;
@@ -245,22 +284,34 @@
       animation: pulse 2s infinite;
     }
 
-    .status-dot.wip {
-      background: var(--accent2);
-      box-shadow: 0 0 8px var(--accent2);
+    .status-dot.wip { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); }
+    .status-dot.new { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+
+    .card-admin-controls { display: flex; gap: 6px; }
+
+    .ctrl-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
     }
 
-    .status-dot.new {
-      background: var(--blue);
-      box-shadow: 0 0 8px var(--blue);
-    }
+    .ctrl-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .ctrl-btn.delete:hover { border-color: var(--danger); color: var(--danger); }
 
     .app-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 26px;
       letter-spacing: 0.04em;
       line-height: 1;
-      color: var(--text);
     }
 
     .app-tag {
@@ -277,12 +328,7 @@
       width: fit-content;
     }
 
-    .app-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
+    .app-desc { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
     .card-footer {
       margin-top: auto;
@@ -303,6 +349,7 @@
       align-items: center;
       gap: 6px;
       transition: gap 0.2s;
+      text-decoration: none;
     }
 
     .app-card:hover .launch-btn { gap: 10px; }
@@ -319,32 +366,8 @@
       transition: background 0.2s;
     }
 
-    .app-card:hover .launch-arrow {
-      background: var(--card-accent, var(--accent));
-      color: #000;
-    }
+    .app-card:hover .launch-arrow { background: var(--card-accent, var(--accent)); color: #000; }
 
-    /* ─── HERO CARD (featured) ─── */
-    .app-card.featured {
-      grid-column: span 2;
-      flex-direction: row;
-      align-items: center;
-      gap: 32px;
-      padding: 36px;
-    }
-
-    .app-card.featured .app-icon {
-      width: 80px;
-      height: 80px;
-      font-size: 36px;
-      flex-shrink: 0;
-    }
-
-    .app-card.featured .app-name { font-size: 40px; }
-
-    .featured-content { flex: 1; }
-
-    /* ─── ADD APP CARD ─── */
     .add-card {
       background: transparent;
       border: 2px dashed var(--border);
@@ -358,13 +381,9 @@
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
       min-height: 200px;
-      text-decoration: none;
     }
 
-    .add-card:hover {
-      border-color: var(--accent);
-      background: rgba(249, 115, 22, 0.04);
-    }
+    .add-card:hover { border-color: var(--accent); background: rgba(249,115,22,0.04); }
 
     .add-icon {
       width: 48px;
@@ -379,19 +398,9 @@
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .add-card:hover .add-icon {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .add-card:hover .add-icon { border-color: var(--accent); color: var(--accent); }
+    .add-label { font-size: 13px; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
 
-    .add-label {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.05em;
-    }
-
-    /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid var(--border);
       padding: 24px 48px;
@@ -404,43 +413,15 @@
       gap: 12px;
     }
 
-    .footer-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-    }
-
+    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.1em; color: var(--muted); }
     .footer-brand span { color: var(--accent); }
+    .footer-note { font-size: 12px; color: #444; }
 
-    .footer-note {
-      font-size: 12px;
-      color: #444;
-    }
-
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .app-card:nth-child(1) { animation-delay: 0.05s; }
-    .app-card:nth-child(2) { animation-delay: 0.1s; }
-    .app-card:nth-child(3) { animation-delay: 0.15s; }
-    .app-card:nth-child(4) { animation-delay: 0.2s; }
-    .app-card:nth-child(5) { animation-delay: 0.25s; }
-    .app-card:nth-child(6) { animation-delay: 0.3s; }
-
-    /* ─── MODAL ─── */
+    /* ─── MODALS ─── */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex;
@@ -452,10 +433,7 @@
       transition: opacity 0.2s;
     }
 
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
 
     .modal {
       background: var(--surface);
@@ -502,17 +480,10 @@
       transition: border-color 0.2s;
     }
 
-    .modal input:focus, .modal select:focus, .modal textarea:focus {
-      border-color: var(--accent);
-    }
-
+    .modal input:focus, .modal select:focus, .modal textarea:focus { border-color: var(--accent); }
     .modal select option { background: var(--surface2); }
 
-    .modal-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 28px;
-    }
+    .modal-actions { display: flex; gap: 12px; margin-top: 28px; }
 
     .btn-primary {
       flex: 1;
@@ -547,10 +518,91 @@
 
     .btn-secondary:hover { border-color: var(--muted); color: var(--text); }
 
-    /* ─── RESPONSIVE ─── */
+    .btn-danger {
+      background: transparent;
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-danger:hover { background: rgba(239,68,68,0.1); }
+
+    /* ─── PIN ─── */
+    .pin-display {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    .pin-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .pin-dot.filled { background: var(--accent); border-color: var(--accent); }
+
+    .pin-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .pin-key {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      text-align: center;
+    }
+
+    .pin-key:hover { background: var(--surface); border-color: var(--accent); color: var(--accent); }
+    .pin-key:active { transform: scale(0.94); }
+    .pin-key.clear { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; }
+    .pin-key.enter { background: var(--accent); color: #000; border-color: var(--accent); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; }
+    .pin-key.enter:hover { background: var(--accent2); border-color: var(--accent2); }
+
+    .pin-error { text-align: center; color: var(--danger); font-size: 13px; font-weight: 500; margin-top: 12px; min-height: 20px; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+    }
+
+    .shake { animation: shake 0.4s ease; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     @media (max-width: 768px) {
       header, nav, .grid-wrapper, footer { padding-left: 20px; padding-right: 20px; }
-      .app-card.featured { grid-column: span 1; flex-direction: column; }
       header::after { font-size: 120px; }
     }
   </style>
@@ -563,14 +615,17 @@
         <div class="brand-eyebrow">Australian Portable Camps — Safety Division</div>
         <h1>Ken's<br/><span>App Store</span></h1>
       </div>
-      <div class="header-meta">
-        <div class="app-count" id="app-count">0</div>
-        <div class="app-count-label">Applications</div>
+      <div class="header-right">
+        <div style="text-align:right">
+          <div class="app-count" id="app-count">0</div>
+          <div class="app-count-label">Applications</div>
+        </div>
+        <div id="admin-status"></div>
       </div>
     </div>
   </header>
 
-  <nav id="filter-nav">
+  <nav>
     <button class="filter-btn active" onclick="filterApps('all', this)">All Apps</button>
     <button class="filter-btn" onclick="filterApps('safety', this)">Safety</button>
     <button class="filter-btn" onclick="filterApps('investigation', this)">Investigation</button>
@@ -579,9 +634,7 @@
   </nav>
 
   <div class="grid-wrapper">
-    <div class="apps-grid" id="apps-grid">
-      <!-- Cards injected by JS -->
-    </div>
+    <div class="apps-grid" id="apps-grid"></div>
   </div>
 
   <footer>
@@ -589,23 +642,49 @@
     <div class="footer-note">Internal tools — APC Safety Division &copy; 2025</div>
   </footer>
 
-  <!-- Add App Modal -->
-  <div class="modal-overlay" id="modal">
-    <div class="modal">
-      <h2>Add New App</h2>
+  <!-- PIN MODAL -->
+  <div class="modal-overlay" id="pin-modal">
+    <div class="modal" style="max-width:340px; text-align:center">
+      <h2 style="text-align:center">Admin Login</h2>
+      <p style="color:var(--muted);font-size:14px;margin-top:-12px">Enter your PIN to continue</p>
+      <div class="pin-display" id="pin-display">
+        <div class="pin-dot" id="dot-0"></div>
+        <div class="pin-dot" id="dot-1"></div>
+        <div class="pin-dot" id="dot-2"></div>
+        <div class="pin-dot" id="dot-3"></div>
+      </div>
+      <div class="pin-keypad">
+        <button class="pin-key" onclick="pinKey('1')">1</button>
+        <button class="pin-key" onclick="pinKey('2')">2</button>
+        <button class="pin-key" onclick="pinKey('3')">3</button>
+        <button class="pin-key" onclick="pinKey('4')">4</button>
+        <button class="pin-key" onclick="pinKey('5')">5</button>
+        <button class="pin-key" onclick="pinKey('6')">6</button>
+        <button class="pin-key" onclick="pinKey('7')">7</button>
+        <button class="pin-key" onclick="pinKey('8')">8</button>
+        <button class="pin-key" onclick="pinKey('9')">9</button>
+        <button class="pin-key clear" onclick="pinClear()">⌫ Clear</button>
+        <button class="pin-key" onclick="pinKey('0')">0</button>
+        <button class="pin-key enter" onclick="pinSubmit()">Enter</button>
+      </div>
+      <div class="pin-error" id="pin-error"></div>
+      <button class="btn-secondary" style="width:100%;margin-top:16px" onclick="closePinModal()">Cancel</button>
+    </div>
+  </div>
 
+  <!-- ADD / EDIT MODAL -->
+  <div class="modal-overlay" id="app-modal">
+    <div class="modal">
+      <h2 id="modal-title">Add New App</h2>
+      <input type="hidden" id="edit-id" value="" />
       <label>App Name</label>
       <input type="text" id="input-name" placeholder="e.g. Sign On Sheet" />
-
       <label>URL</label>
       <input type="url" id="input-url" placeholder="https://..." />
-
       <label>Description</label>
       <textarea id="input-desc" rows="2" placeholder="What does this app do?"></textarea>
-
       <label>Icon (emoji)</label>
       <input type="text" id="input-icon" placeholder="e.g. 📋" maxlength="2" />
-
       <label>Category</label>
       <select id="input-cat">
         <option value="safety">Safety</option>
@@ -613,140 +692,107 @@
         <option value="admin">Admin</option>
         <option value="field">Field Tools</option>
       </select>
-
       <label>Status</label>
       <select id="input-status">
         <option value="live">Live</option>
         <option value="wip">Work in Progress</option>
         <option value="new">New</option>
       </select>
-
       <div class="modal-actions">
-        <button class="btn-secondary" onclick="closeModal()">Cancel</button>
-        <button class="btn-primary" onclick="addApp()">Add App</button>
+        <button class="btn-secondary" onclick="closeAppModal()">Cancel</button>
+        <button class="btn-primary" id="modal-save-btn" onclick="saveApp()">Add App</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal" style="max-width:400px">
+      <h2 style="color:var(--danger)">Delete App</h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.6">Are you sure you want to delete <strong id="delete-app-name" style="color:var(--text)"></strong>? This cannot be undone.</p>
+      <div class="modal-actions" style="margin-top:28px">
+        <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn-danger" onclick="confirmDelete()">Delete</button>
       </div>
     </div>
   </div>
 
   <script>
-    // ─── DEFAULT APPS ───
+    // ── SET YOUR PIN HERE ──
+    const ADMIN_PIN = '1234';
+
     const defaultApps = [
-      {
-        id: 1,
-        name: "Sign On Sheet",
-        url: "https://kenedwards65.github.io/apcappssignonsheets/",
-        desc: "Digital site sign-on and sign-off for remote camp locations.",
-        icon: "📋",
-        category: "field",
-        status: "live",
-        accent: "#f97316"
-      },
-      {
-        id: 2,
-        name: "ICAM Investigator",
-        url: "#",
-        desc: "Structured incident causation analysis and contributing factor mapping.",
-        icon: "🔍",
-        category: "investigation",
-        status: "wip",
-        accent: "#a855f7"
-      },
-      {
-        id: 3,
-        name: "Bow-Tie Builder",
-        url: "#",
-        desc: "Visual risk bow-tie diagram generator for hazard and barrier mapping.",
-        icon: "🎯",
-        category: "safety",
-        status: "wip",
-        accent: "#ef4444"
-      },
-      {
-        id: 4,
-        name: "Risk Register",
-        url: "#",
-        desc: "Live risk register with consequence and likelihood matrix scoring.",
-        icon: "⚠️",
-        category: "safety",
-        status: "wip",
-        accent: "#f97316"
-      },
-      {
-        id: 5,
-        name: "Induction Tracker",
-        url: "#",
-        desc: "Track worker site inductions, certificates, and expiry dates.",
-        icon: "🪪",
-        category: "admin",
-        status: "wip",
-        accent: "#3b82f6"
-      }
+      { id:1, name:"Sign On Sheet",    url:"https://kenedwards65.github.io/apcappssignonsheets/", desc:"Digital site sign-on and sign-off for remote camp locations.",                    icon:"📋", category:"field",         status:"live", accent:"#f97316" },
+      { id:2, name:"ICAM Investigator",url:"#",                                                    desc:"Structured incident causation analysis and contributing factor mapping.",         icon:"🔍", category:"investigation", status:"wip",  accent:"#a855f7" },
+      { id:3, name:"Bow-Tie Builder",  url:"#",                                                    desc:"Visual risk bow-tie diagram generator for hazard and barrier mapping.",           icon:"🎯", category:"safety",        status:"wip",  accent:"#ef4444" },
+      { id:4, name:"Risk Register",    url:"#",                                                    desc:"Live risk register with consequence and likelihood matrix scoring.",              icon:"⚠️", category:"safety",        status:"wip",  accent:"#f97316" },
+      { id:5, name:"Induction Tracker",url:"#",                                                    desc:"Track worker site inductions, certificates, and expiry dates.",                  icon:"🪪", category:"admin",         status:"wip",  accent:"#3b82f6" }
     ];
 
-    // ─── STATE ───
-    let apps = JSON.parse(localStorage.getItem('kas-apps') || 'null') || defaultApps;
-    let nextId = Math.max(...apps.map(a => a.id), 0) + 1;
+    let apps          = JSON.parse(localStorage.getItem('kas-apps') || 'null') || defaultApps;
+    let nextId        = Math.max(...apps.map(a => a.id), 0) + 1;
     let currentFilter = 'all';
+    let isAdmin       = false;
+    let pinEntry      = '';
+    let deleteTarget  = null;
 
-    const accentMap = {
-      safety: "#ef4444",
-      investigation: "#a855f7",
-      admin: "#3b82f6",
-      field: "#f97316"
-    };
+    const accentMap   = { safety:"#ef4444", investigation:"#a855f7", admin:"#3b82f6", field:"#f97316" };
+    const statusLabel = { live:"Live", wip:"In Progress", new:"New" };
 
-    const statusLabel = { live: "Live", wip: "In Progress", new: "New" };
+    function save() { localStorage.setItem('kas-apps', JSON.stringify(apps)); }
 
-    // ─── SAVE ───
-    function save() {
-      localStorage.setItem('kas-apps', JSON.stringify(apps));
-    }
-
-    // ─── RENDER ───
+    // ── RENDER ──
     function render(filter = 'all') {
-      const grid = document.getElementById('apps-grid');
+      const grid     = document.getElementById('apps-grid');
       const filtered = filter === 'all' ? apps : apps.filter(a => a.category === filter);
-
       document.getElementById('app-count').textContent = apps.length;
 
       let html = filtered.map((app, i) => {
-        const accent = app.accent || accentMap[app.category] || '#f97316';
+        const accent   = app.accent || accentMap[app.category] || '#f97316';
         const dotClass = app.status === 'wip' ? 'wip' : app.status === 'new' ? 'new' : '';
+        const controls = isAdmin ? `
+          <div class="card-admin-controls">
+            <button class="ctrl-btn"        onclick="openEditModal(${app.id});event.stopPropagation()" title="Edit">✏️</button>
+            <button class="ctrl-btn delete" onclick="openDeleteModal(${app.id});event.stopPropagation()" title="Delete">🗑️</button>
+          </div>` : '';
         return `
-          <a class="app-card" href="${app.url}" target="_blank" rel="noopener"
-             style="--card-accent: ${accent}; animation-delay: ${i * 0.05}s">
+          <div class="app-card" style="--card-accent:${accent};animation-delay:${i*0.05}s">
             <div class="card-top">
               <div class="app-icon">${app.icon}</div>
-              <div class="status-dot ${dotClass}" title="${statusLabel[app.status]}"></div>
+              <div class="card-top-right">
+                ${controls}
+                <div class="status-dot ${dotClass}" title="${statusLabel[app.status]}"></div>
+              </div>
             </div>
-            <div>
-              <div class="app-tag">${app.category}</div>
-            </div>
+            <div><div class="app-tag">${app.category}</div></div>
             <div class="app-name">${app.name}</div>
             <div class="app-desc">${app.desc}</div>
             <div class="card-footer">
-              <div class="launch-btn">
-                Launch
-                <div class="launch-arrow">→</div>
-              </div>
+              <a class="launch-btn" href="${app.url}" target="_blank" rel="noopener">
+                Launch <div class="launch-arrow">→</div>
+              </a>
               <div style="font-size:11px;color:#555;letter-spacing:0.05em;text-transform:uppercase">${statusLabel[app.status]}</div>
             </div>
-          </a>
-        `;
+          </div>`;
       }).join('');
 
-      // Add app card
-      html += `
-        <div class="add-card" onclick="openModal()">
+      if (isAdmin) html += `
+        <div class="add-card" onclick="openAddModal()">
           <div class="add-icon">＋</div>
           <div class="add-label">Add New App</div>
-        </div>
-      `;
+        </div>`;
 
       grid.innerHTML = html;
+      renderAdminBadge();
     }
 
-    // ─── FILTER ───
+    function renderAdminBadge() {
+      const el = document.getElementById('admin-status');
+      el.innerHTML = isAdmin
+        ? `<div class="admin-badge" onclick="logoutAdmin()"><div class="dot"></div>Admin — Click to Logout</div>`
+        : `<button class="login-btn" onclick="openPinModal()">Admin Login</button>`;
+    }
+
     function filterApps(cat, btn) {
       currentFilter = cat;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -754,51 +800,132 @@
       render(cat);
     }
 
-    // ─── MODAL ───
-    function openModal() {
-      document.getElementById('modal').classList.add('open');
+    // ── PIN ──
+    function openPinModal() {
+      pinEntry = '';
+      updateDots();
+      document.getElementById('pin-error').textContent = '';
+      document.getElementById('pin-modal').classList.add('open');
     }
 
-    function closeModal() {
-      document.getElementById('modal').classList.remove('open');
-      document.getElementById('input-name').value = '';
-      document.getElementById('input-url').value = '';
-      document.getElementById('input-desc').value = '';
-      document.getElementById('input-icon').value = '';
+    function closePinModal() {
+      document.getElementById('pin-modal').classList.remove('open');
+      pinEntry = '';
+      updateDots();
     }
 
-    // Close on backdrop click
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
+    function pinKey(d) {
+      if (pinEntry.length >= 4) return;
+      pinEntry += d;
+      updateDots();
+      if (pinEntry.length === 4) setTimeout(pinSubmit, 150);
+    }
 
-    // ─── ADD APP ───
-    function addApp() {
-      const name = document.getElementById('input-name').value.trim();
-      const url = document.getElementById('input-url').value.trim();
-      const desc = document.getElementById('input-desc').value.trim();
-      const icon = document.getElementById('input-icon').value.trim() || '📦';
+    function pinClear() { pinEntry = pinEntry.slice(0,-1); updateDots(); }
+
+    function updateDots() {
+      for (let i = 0; i < 4; i++)
+        document.getElementById(`dot-${i}`).classList.toggle('filled', i < pinEntry.length);
+    }
+
+    function pinSubmit() {
+      if (pinEntry === ADMIN_PIN) {
+        isAdmin = true;
+        closePinModal();
+        render(currentFilter);
+      } else {
+        document.getElementById('pin-error').textContent = 'Incorrect PIN. Try again.';
+        const d = document.getElementById('pin-display');
+        d.classList.remove('shake');
+        void d.offsetWidth;
+        d.classList.add('shake');
+        pinEntry = '';
+        updateDots();
+      }
+    }
+
+    function logoutAdmin() { isAdmin = false; render(currentFilter); }
+
+    // ── APP MODAL ──
+    function openAddModal() {
+      document.getElementById('modal-title').textContent    = 'Add New App';
+      document.getElementById('modal-save-btn').textContent = 'Add App';
+      document.getElementById('edit-id').value              = '';
+      ['input-name','input-url','input-desc','input-icon'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('input-cat').value    = 'safety';
+      document.getElementById('input-status').value = 'live';
+      document.getElementById('app-modal').classList.add('open');
+    }
+
+    function openEditModal(id) {
+      const app = apps.find(a => a.id === id);
+      if (!app) return;
+      document.getElementById('modal-title').textContent    = 'Edit App';
+      document.getElementById('modal-save-btn').textContent = 'Save Changes';
+      document.getElementById('edit-id').value              = id;
+      document.getElementById('input-name').value           = app.name;
+      document.getElementById('input-url').value            = app.url;
+      document.getElementById('input-desc').value           = app.desc;
+      document.getElementById('input-icon').value           = app.icon;
+      document.getElementById('input-cat').value            = app.category;
+      document.getElementById('input-status').value         = app.status;
+      document.getElementById('app-modal').classList.add('open');
+    }
+
+    function closeAppModal() { document.getElementById('app-modal').classList.remove('open'); }
+
+    function saveApp() {
+      const name     = document.getElementById('input-name').value.trim();
+      const url      = document.getElementById('input-url').value.trim();
+      const desc     = document.getElementById('input-desc').value.trim();
+      const icon     = document.getElementById('input-icon').value.trim() || '📦';
       const category = document.getElementById('input-cat').value;
-      const status = document.getElementById('input-status').value;
+      const status   = document.getElementById('input-status').value;
+      const editId   = document.getElementById('edit-id').value;
 
-      if (!name || !url) {
-        alert('Name and URL are required.');
-        return;
+      if (!name || !url) { alert('Name and URL are required.'); return; }
+
+      if (editId) {
+        const idx = apps.findIndex(a => a.id === parseInt(editId));
+        if (idx > -1) apps[idx] = { ...apps[idx], name, url, desc, icon, category, status, accent: accentMap[category] };
+      } else {
+        apps.push({ id: nextId++, name, url, desc, icon, category, status, accent: accentMap[category] });
       }
 
-      const newApp = {
-        id: nextId++,
-        name, url, desc, icon, category, status,
-        accent: accentMap[category]
-      };
-
-      apps.push(newApp);
       save();
-      closeModal();
+      closeAppModal();
       render(currentFilter);
     }
 
-    // ─── INIT ───
+    // ── DELETE ──
+    function openDeleteModal(id) {
+      const app = apps.find(a => a.id === id);
+      if (!app) return;
+      deleteTarget = id;
+      document.getElementById('delete-app-name').textContent = app.name;
+      document.getElementById('delete-modal').classList.add('open');
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('delete-modal').classList.remove('open');
+      deleteTarget = null;
+    }
+
+    function confirmDelete() {
+      if (deleteTarget === null) return;
+      apps = apps.filter(a => a.id !== deleteTarget);
+      save();
+      closeDeleteModal();
+      render(currentFilter);
+    }
+
+    // Backdrop close
+    ['app-modal','delete-modal'].forEach(id => {
+      document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+      });
+    });
+
     render();
   </script>
 </body>
